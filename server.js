@@ -8,9 +8,22 @@ dotenv.config(); // Load API keys from .env
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
+
 // Middleware
 app.use(cors());
 app.use(express.json()); // for parsing JSON bodies
+
+//Express add to make this load locally
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve static files from the "public" folder
+app.use(express.static(path.join(__dirname, "public")));
+
 
 // ----------------------------
 // 1) Event API (POST)
