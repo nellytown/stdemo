@@ -42,7 +42,7 @@ app.post("/event", async (req, res) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Amperity-Tenant": "stellantis-ee-test",
+        "X-Amperity-Tenant": "stellantis-ee",
         "Authorization": `Bearer ${process.env.AMPSERVER_API_KEY_STREAM}`
       },
       body: JSON.stringify(eventData),
@@ -80,7 +80,7 @@ app.get("/profile", async (req, res) => {
     const upstream = await fetch(apiUrl, {
       headers: {
         "Accept": "application/json",
-        "X-Amperity-Tenant": "stellantis-ee-test",
+        "X-Amperity-Tenant": "stellantis-ee",
         "Authorization": `Bearer ${process.env.AMPSERVER_API_KEY}`
       }
     });
@@ -117,7 +117,7 @@ app.get("/segments", async (req, res) => {
     const upstream = await fetch(apiUrl, {
       headers: {
         "Accept": "application/json",
-        "X-Amperity-Tenant": "stellantis-ee-test",
+        "X-Amperity-Tenant": "stellantis-ee",
         "Authorization": `Bearer ${process.env.AMPSERVER_API_KEY}`
       }
     });
