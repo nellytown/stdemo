@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Amperity Test Page</title>
+  <title>(Demo) Sample Webpage to interact with Amperity Event Streaming and Customer Profiles</title>
   <style>
     /* Use Encode Sans Expanded if available */
     @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300;400;600;700&display=swap');
@@ -95,16 +95,16 @@
   </section>
 
   <section class="card">
-    <h2>Send Events</h2>
-    <button onclick="sendEvent('JeepView')">Jeep</button>
-    <button onclick="sendEvent('FiatView')">Fiat</button>
-    <button onclick="sendEvent('PeugeotView')">Peugeot</button>
+    <h2>Send customer interaction events to Amperity</h2>
+    <button onclick="sendEvent('JeepView')">View Jeep Vehicle</button>
+    <button onclick="sendEvent('FiatView')">View Fiat Vehicle</button>
+    <button onclick="sendEvent('PeugeotView')">View Peugeot Vehicle</button>
     <h3>Event API Response</h3>
     <pre id="eventOutput"></pre>
   </section>
 
   <section class="card">
-    <h2>Profile & Segments</h2>
+    <h2>Profile & Segments: Call Amperity to view the current customer profile</h2>
     <button onclick="fetchProfileAndSegments()">Get Profile & Segments</button>
 
     <h3>Profile (Readable)</h3>
@@ -112,7 +112,7 @@
     <h3>Profile (Raw JSON)</h3>
     <pre id="profileOutput"></pre>
 
-    <h3>Segments (Readable)</h3>
+    <h3>Customer's Current Segment Membership (Readable)</h3>
     <div id="segmentsReadable"></div>
     <h3>Segments (Raw JSON)</h3>
     <pre id="segmentsOutput"></pre>

@@ -75,7 +75,7 @@ app.get("/profile", async (req, res) => {
   }
 
   try {
-    const apiUrl = `https://stellantis-ee-test.amperity.com/prof/profiles/apc-i6JnGvMX/${encodeURIComponent(ampID)}`;
+    const apiUrl = `https://stellantis-ee-test.amperity.com/prof/profiles/apc-FJfHREoo/${encodeURIComponent(ampID)}`;
 
     const upstream = await fetch(apiUrl, {
       headers: {
@@ -112,7 +112,7 @@ app.get("/segments", async (req, res) => {
   }
 
   try {
-    const apiUrl = `https://stellantis-ee-test.amperity.com/prof/profiles/apc-i6JnGvMX/${encodeURIComponent(ampID)}/segments`;
+    const apiUrl = `https://stellantis-ee-test.amperity.com/prof/profiles/apc-FJfHREoo/${encodeURIComponent(ampID)}/segments`;
 
     const upstream = await fetch(apiUrl, {
       headers: {
