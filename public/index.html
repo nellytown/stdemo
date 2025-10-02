@@ -128,7 +128,7 @@
       PeugeotView: { amperity_id: "", first_party_cookie: "123-123", brand: "Peugeot", pagecategory: "product_page", title: "Peugeot 208 Vehicle View" }
     };
 
-    // Recursive table renderer
+    // Recursive table renderer (alphabetical)
     function renderObjectAsTable(obj, containerId) {
       const container = document.getElementById(containerId);
       container.innerHTML = "";
@@ -141,7 +141,11 @@
       function buildTable(data) {
         const table = document.createElement("table");
 
-        for (const [key, value] of Object.entries(data)) {
+        // 🔑 sort keys alphabetically
+        const sortedKeys = Object.keys(data).sort((a, b) => a.localeCompare(b));
+
+        for (const key of sortedKeys) {
+          const value = data[key];
           const row = table.insertRow();
           const cellKey = row.insertCell(0);
           cellKey.textContent = key;
@@ -176,36 +180,34 @@
     }
 
     // Send event to server
-async function sendEvent(eventKey) {
-  const customerId = document.getElementById("customerIdInput").value.trim();
-  if (!customerId) {
-    alert("Please enter a Customer ID");
-    return;
-  }
+    async function sendEvent(eventKey) {
+      const customerId = document.getElementById("customerIdInput").value.trim();
+      if (!customerId) {
+        alert("Please enter a Customer ID");
+        return;
+      }
 
-  const payload = { ...eventPayloads[eventKey], amperity_id: customerId };
+      const payload = { ...eventPayloads[eventKey], amperity_id: customerId };
 
-  try {
-    const response = await fetch(`${serverUrl}/event`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
+      try {
+        const response = await fetch(`${serverUrl}/event`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
 
-    const data = await response.json();
+        const data = await response.json();
 
-    if (data.success) {
-      document.getElementById("eventOutput").textContent = `${eventKey} sent`;
-    } else {
-      document.getElementById("eventOutput").textContent =
-        `Error: ${data.error || "Unknown error"}`;
+        if (data.success) {
+          document.getElementById("eventOutput").textContent = `${eventKey} sent`;
+        } else {
+          document.getElementById("eventOutput").textContent =
+            `Error: ${data.error || "Unknown error"}`;
+        }
+      } catch (err) {
+        document.getElementById("eventOutput").textContent = `Error sending event: ${err}`;
+      }
     }
-  } catch (err) {
-    document.getElementById("eventOutput").textContent = `Error sending event: ${err}`;
-  }
-}
-
-
 
     // Fetch profile & segments
     async function fetchProfileAndSegments() {
@@ -238,4 +240,3 @@ async function sendEvent(eventKey) {
   </script>
 </body>
 </html>
-
