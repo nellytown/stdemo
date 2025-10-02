@@ -36,7 +36,7 @@ app.post("/event", async (req, res) => {
   }
 
   try {
-    const apiUrl = "https://stellantis-ee-test.amperity.com/stream/v0/data/is-vk4M4QcN";
+    const apiUrl = "https://stellantis-ee.amperity.com/stream/v0/data/is-39NtKA8Y1";
 
     const upstream = await fetch(apiUrl, {
       method: "POST",
@@ -75,7 +75,7 @@ app.get("/profile", async (req, res) => {
   }
 
   try {
-    const apiUrl = `https://stellantis-ee-test.amperity.com/prof/profiles/apc-FJfHREoo/${encodeURIComponent(ampID)}`;
+    const apiUrl = `https://stellantis-ee.amperity.com/prof/profiles/apc-23dQdiQhs/${encodeURIComponent(ampID)}`;
 
     const upstream = await fetch(apiUrl, {
       headers: {
@@ -112,7 +112,7 @@ app.get("/segments", async (req, res) => {
   }
 
   try {
-    const apiUrl = `https://stellantis-ee-test.amperity.com/prof/profiles/apc-FJfHREoo/${encodeURIComponent(ampID)}/segments`;
+    const apiUrl = `https://stellantis-ee.amperity.com/prof/profiles/apc-23dQdiQhs/${encodeURIComponent(ampID)}/segments`;
 
     const upstream = await fetch(apiUrl, {
       headers: {
